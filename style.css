@@ -1,0 +1,350 @@
+/* style.css */
+
+/* --- Global Styles --- */
+body {
+    font-family: sans-serif; /* Font bawaan browser yang umum dan mudah dibaca */
+    margin: 0;
+    padding: 0;
+    background-color: #1a2a3a; /* Dark-blue background */
+    color: #f0f0f0; /* Off-white for main text */
+    line-height: 1.6;
+}
+
+#page-container {
+    max-width: 1200px; /* Lebar maksimum konten */
+    margin: 0 auto; /* Tengah di layar */
+    background-color: #2a3a4a; /* Sedikit lebih terang dari body untuk kontras */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+a {
+    color: #64b5f6; /* Warna biru muda untuk link */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- Header Styles --- */
+.main-header {
+    background-color: #15202b; /* Darker blue for header */
+    padding: 20px;
+    border-bottom: 1px solid #3c526b; /* Garis pemisah */
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.site-logo {
+    font-size: 2.5em; /* Ukuran besar untuk logo */
+    font-weight: bold;
+    color: #ffffff; /* Putih bersih */
+}
+
+.trending-section {
+    font-size: 1.2em;
+    color: #f0f0f0;
+}
+
+.trending-nav {
+    margin-left: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.header-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid untuk post header */
+    gap: 15px;
+}
+
+.header-post {
+    background-color: #22303c; /* Background untuk setiap post di header */
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #3c526b;
+}
+
+.header-post .category {
+    font-size: 0.8em;
+    color: #90caf9; /* Biru terang untuk kategori */
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.header-post .post-title {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.header-post .post-meta {
+    font-size: 0.7em;
+    color: #b0b0b0; /* Abu-abu terang untuk meta info */
+}
+
+/* --- Main Content and Sidebar Layout --- */
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Agar bisa wrap ke bawah di layar kecil */
+    padding: 20px;
+    gap: 20px;
+}
+
+.main-content {
+    flex: 3; /* Ambil 3 bagian ruang */
+    min-width: 60%; /* Minimal lebar agar tidak terlalu sempit */
+}
+
+.main-sidebar {
+    flex: 1; /* Ambil 1 bagian ruang */
+    min-width: 300px; /* Minimal lebar sidebar */
+    background-color: #22303c;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #3c526b;
+}
+
+.section-title, .sidebar-title {
+    font-size: 1.8em;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3c526b;
+}
+
+/* --- Latest Articles Section --- */
+.latest-articles {
+    margin-bottom: 30px;
+}
+
+.trending-article {
+    background-color: #22303c;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #3c526b;
+    margin-bottom: 15px;
+}
+
+.trending-article .article-title {
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.trending-article .article-meta {
+    font-size: 0.9em;
+    color: #b0b0b0;
+}
+
+.article-card {
+    background-color: #22303c;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #3c526b;
+    margin-bottom: 10px;
+}
+
+.article-card .card-title {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.article-card .card-meta {
+    font-size: 0.8em;
+    color: #b0b0b0;
+}
+
+/* --- Body Posts Section --- */
+.body-posts .post-item {
+    background-color: #22303c;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #3c526b;
+    margin-bottom: 15px;
+}
+
+.body-posts .post-item .category {
+    font-size: 0.9em;
+    color: #90caf9;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.body-posts .post-item .post-title {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.body-posts .post-item .post-description {
+    font-size: 1em;
+    color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+.body-posts .post-item .post-author-date {
+    font-size: 0.8em;
+    color: #b0b0b0;
+}
+
+.load-more-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #64b5f6; /* Biru cerah untuk tombol */
+    color: #15202b; /* Dark blue for text on button */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.load-more-btn:hover {
+    background-color: #42a5f5; /* Lebih gelap saat hover */
+}
+
+/* --- Sidebar Sections --- */
+.main-sidebar section {
+    margin-bottom: 30px;
+}
+
+.main-sidebar .social-link {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #f0f0f0;
+}
+
+.main-sidebar .sidebar-post {
+    padding: 10px 0;
+    border-bottom: 1px dashed #3c526b; /* Garis putus-putus */
+    margin-bottom: 10px;
+}
+
+.main-sidebar .sidebar-post:last-child {
+    border-bottom: none;
+}
+
+.main-sidebar .sidebar-post .category {
+    font-size: 0.75em;
+    color: #90caf9;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.main-sidebar .sidebar-post .post-title {
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 3px;
+    color: #ffffff;
+}
+
+.main-sidebar .sidebar-post .post-meta {
+    font-size: 0.7em;
+    color: #b0b0b0;
+}
+
+.main-sidebar .popular-item {
+    padding: 5px 0;
+    margin-bottom: 5px;
+}
+
+.main-sidebar .popular-meta {
+    font-size: 0.9em;
+    color: #f0f0f0;
+}
+
+.main-sidebar ul {
+    list-style: none; /* Hilangkan bullet default */
+    padding: 0;
+    margin: 0;
+}
+
+.main-sidebar ul li {
+    background-color: #1a2a3a;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    border: 1px solid #3c526b;
+    color: #f0f0f0;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.main-sidebar ul li:hover {
+    background-color: #2a3a4a;
+}
+
+.main-sidebar .description-text {
+    font-size: 0.95em;
+    color: #e0e0e0;
+}
+
+
+/* --- Footer Styles --- */
+.main-footer {
+    background-color: #15202b;
+    color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #3c526b;
+    font-size: 0.9em;
+}
+
+.main-footer .copyright {
+    margin-bottom: 10px;
+}
+
+.main-footer .footer-nav a {
+    margin: 0 10px;
+    color: #64b5f6; /* Warna link di footer */
+}
+
+/* --- Responsive Adjustments (Optional but Recommended) --- */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column; /* Stack content and sidebar vertically */
+    }
+
+    .main-content, .main-sidebar {
+        min-width: unset; /* Hapus minimal width */
+        width: 100%; /* Ambil lebar penuh */
+    }
+
+    .header-content {
+        grid-template-columns: 1fr; /* Satu kolom untuk post header */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header, .content-wrapper, .main-footer {
+        padding: 15px;
+    }
+
+    .site-logo {
+        font-size: 2em;
+    }
+
+    .section-title, .sidebar-title {
+        font-size: 1.5em;
+    }
+
+    .header-post .post-title,
+    .trending-article .article-title,
+    .body-posts .post-item .post-title {
+        font-size: 1.1em;
+    }
+}
