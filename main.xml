@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<b:template xmlns='http://www.w3.org/1999/xhtml' 
+            xmlns:b='http://www.google.com/2005/gml/b' 
+            xmlns:data='http://www.google.com/2005/gml/data' 
+            xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+  <b:include data='blog' name='all-head-content'/>
+
+  <head>
+    <meta charset='UTF-8'/>
+    <title><data:blog.pageTitle/></title>
+
+    <!-- Link ke file CSS eksternal yang nanti kamu host di GitHub -->
+    <link href='https://your-github-url/css/main.css' rel='stylesheet' type='text/css'/>
+
+    <!-- Link ke file JS eksternal kalau nanti dibutuhkan -->
+    <script src='https://your-github-url/js/main.js' type='text/javascript'></script>
+  </head>
+
+  <body class='dark-mode'>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+      <b:section id='header-section' class='header-wrapper' showaddelement='yes'>
+        <!-- Logo / Nama Blog -->
+        <b:widget id='Header1' type='Header' title='Blog Logo / Title'/>
+        
+        <!-- Widget pencarian -->
+        <b:widget id='SearchBox1' type='SearchBox' title='Search'/>
+      </b:section>
+    </header>
+
+    <!-- =============== HERO SECTION ============== -->
+    <section class='hero-wrapper'>
+      <b:section id='hero-section' class='hero' showaddelement='yes'>
+        <!-- Trending Post / Latest -->
+        <b:widget id='FeaturedPost1' type='FeaturedPost' title='Latest / Trending'/>
+      </b:section>
+    </section>
+
+    <!-- =============== MAIN CONTENT ============== -->
+    <main class='main-wrapper'>
+      <!-- Artikel Utama -->
+      <b:section id='main-post-section' class='main-content' showaddelement='yes'>
+        <b:widget id='Blog1' type='Blog' title='Blog Posts'/>
+      </b:section>
+
+      <!-- Sidebar -->
+      <aside class='sidebar-wrapper'>
+        <b:section id='sidebar-section' class='sidebar' showaddelement='yes'>
+          <!-- Kategori -->
+          <b:widget id='Label1' type='Label' title='Kategori'/>
+          <!-- Populer Post -->
+          <b:widget id='PopularPosts1' type='PopularPosts' title='Populer'/>
+          <!-- Tools (bisa pakai HTML/JavaScript) -->
+          <b:widget id='HTML1' type='HTML' title='Tools'/>
+        </b:section>
+      </aside>
+    </main>
+
+    <!-- =============== FOOTER ================= -->
+    <footer class='footer-wrapper'>
+      <b:section id='footer-section' class='footer' showaddelement='yes'>
+        <b:widget id='HTML2' type='HTML' title='Footer Links'/>
+      </b:section>
+    </footer>
+
+    <!-- Widget bawaan blogger -->
+    <b:include data='blog' name='all-body-content'/>
+
+  </body>
+</b:template>
