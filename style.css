@@ -42,16 +42,15 @@ body {
 
 /* Gaya untuk menu navigasi */
 .nav-menu {
-    display: none; 
+    display: none;
     position: absolute;
     top: 50px;
     left: 20px;
-    background-color: #22303c;
+    background-color: #1a2a3a;
     border: 1px solid #3c526b;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    /* Gunakan properti ini untuk transisi masuk/keluar */
     transform: translateX(-100%);
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -59,7 +58,7 @@ body {
 }
 
 .nav-menu.active {
-    display: block; 
+    display: block;
     transform: translateX(0);
     opacity: 1;
 }
@@ -91,11 +90,11 @@ body {
 
 /* Gaya untuk kotak pencarian */
 .search-form {
-    display: none; 
+    display: none;
     position: absolute;
     top: 10px;
     right: 60px;
-    background-color: #22303c;
+    background-color: #1a2a3a;
     border: 1px solid #3c526b;
     border-radius: 5px;
     padding: 5px;
@@ -107,7 +106,7 @@ body {
 }
 
 .search-form.active {
-    display: flex; 
+    display: flex;
     opacity: 1;
 }
 
@@ -141,10 +140,26 @@ body {
     color: #f0f0f0;
     cursor: pointer;
     transition: transform 0.3s ease, color 0.2s ease;
+    background: none;
+    border: none;
+    padding: 8px;
 }
 
 .search-icon:hover {
     color: #64b5f6;
+}
+
+.search-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.search-toggle:hover {
+    background-color: rgba(100, 181, 246, 0.1);
 }
 
 /* Gaya untuk kontainer judul trending */
@@ -194,7 +209,7 @@ body {
     grid-template-columns: 3fr 1fr;
     gap: 20px;
     padding: 20px;
-    padding-top: 80px; 
+    padding-top: 80px;
     min-height: calc(100vh - 80px);
     box-sizing: border-box;
     position: relative;
@@ -208,14 +223,17 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #3c526b;
-    position: sticky; /* Pastikan ini sticky */
+    position: sticky;
+    /* Pastikan ini sticky */
     top: 0;
-    z-index: 1000; /* Z-index lebih tinggi dari elemen lain */
-    transition: transform 0.3s ease-in-out; /* Transisi untuk hide/show */
+    z-index: 1000;
+    /* Z-index lebih tinggi dari elemen lain */
+    transition: transform 0.3s ease-in-out;
+    /* Transisi untuk hide/show */
 }
 
 .top-bar.hidden {
-    transform: translateY(-100%); 
+    transform: translateY(-100%);
 }
 
 .top-left {
@@ -235,10 +253,26 @@ body {
     color: #f0f0f0;
     cursor: pointer;
     transition: color 0.2s ease;
+    background: none;
+    border: none;
+    padding: 8px;
 }
 
 .menu-icon:hover {
     color: #64b5f6;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background-color: rgba(100, 181, 246, 0.1);
 }
 
 .site-logo-small {
@@ -387,24 +421,29 @@ body {
     .main-content {
         grid-template-columns: 1fr;
     }
+    
     .trending-and-tools-wrapper {
         grid-template-columns: 1fr 1fr;
     }
+    
     .footer-top-row {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
+    
     .footer-bottom-row {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         flex-wrap: nowrap;
     }
+    
     .main-footer .footer-nav {
         margin-left: auto;
         text-align: right;
     }
+    
     .header-post .post-title {
         font-size: 1.1em;
     }
@@ -421,6 +460,7 @@ body {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
 .skip-link {
     position: absolute;
     top: -40px;
