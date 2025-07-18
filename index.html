@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog tentang crypto, airdrop, dan teknologi terkini">
+    <meta name="keywords" content="crypto, airdrop, blockchain, teknologi, bitcoin, ethereum">
+    <meta name="author" content="OverKing">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="OverKing Blog - Crypto, Airdrop & Teknologi">
+    <meta property="og:description" content="Blog tentang crypto, airdrop, dan teknologi terkini">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://overking.blog">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/3e1a5f/FFFFFF?text=OverKing+Blog">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OverKing Blog - Crypto, Airdrop & Teknologi">
+    <meta name="twitter:description" content="Blog tentang crypto, airdrop, dan teknologi terkini">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/3e1a5f/FFFFFF?text=OverKing+Blog">
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://via.placeholder.com">
+    
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "OverKing Blog",
+            "description": "Blog tentang crypto, airdrop, dan teknologi terkini",
+            "url": "https://overking.blog",
+            "author": {
+                "@type": "Person",
+                "name": "OverKing"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "OverKing",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://via.placeholder.com/50x50/3e1a5f/FFFFFF?text=LOGO"
+                }
+            }
+        }
+    </script>
+    
+    <title>OverKing Blog - Crypto, Airdrop & Teknologi Terkini</title>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <div id="page-container">
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+        
+        <header class="main-header" role="banner" x-data="{
+            lastScrollY: 0,
+            isTopBarHidden: false,
+            headerHeight: 0,
+            init() {
+                window.addEventListener('scroll', () => {
+                    let currentScrollY = window.scrollY;
+                    if (currentScrollY > this.lastScrollY && currentScrollY > 50) {
+                        this.isTopBarHidden = true;
+                    } else if (currentScrollY < this.lastScrollY || currentScrollY <= 50) {
+                        this.isTopBarHidden = false;
+                    }
+                    this.lastScrollY = currentScrollY;
+                });
+                if (window.scrollY > 50) {
+                    this.isTopBarHidden = true;
+                }
+                this.$nextTick(() => {
+                    this.headerHeight = this.$el.offsetHeight;
+                });
+            }
+        }">
+            <nav class="top-bar" role="navigation" aria-label="Main navigation" :class="{ 'hidden': isTopBarHidden }" x-cloak>
+                <div class="top-left" x-data="{ isMenuOpen: false }" @click.away="isMenuOpen = false">
+                    <button class="menu-toggle" aria-expanded="false" :aria-expanded="isMenuOpen.toString()" aria-controls="nav-menu" aria-label="Toggle navigation menu" @click="isMenuOpen = !isMenuOpen">
+                        <i class="fas fa-bars menu-icon" aria-hidden="true"></i>
+                    </button>
+                    <a href="index.html" class="site-logo-small">OverKing</a>
+                    <ul class="nav-menu" id="nav-menu" :class="{ 'active': isMenuOpen }" x-cloak>
+                        <li><a href="index.html" aria-current="page">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="top-right" x-data="{ isSearchOpen: false }" @click.away="isSearchOpen = false">
+                    <span class="site-logo-temp" aria-hidden="true"></span>
+                    <button class="search-toggle" aria-expanded="false" :aria-expanded="isSearchOpen.toString()" aria-controls="search-form" aria-label="Toggle search" @click="isSearchOpen = !isSearchOpen; $nextTick(() => { if(isSearchOpen) $refs.searchInput.focus(); });">
+                        <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                    </button>
+                    <form class="search-form" id="search-form" action="/search" method="get" role="search" :class="{ 'active': isSearchOpen }" x-cloak>
+                        <label for="search-input" class="visually-hidden">Search articles</label>
+                        <input type="search" id="search-input" class="search-input" name="q" placeholder="Cari artikel..." aria-label="Search articles" required x-ref="searchInput">
+                        <button type="submit" class="search-submit" aria-label="Submit search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </nav>
+            
+            <div class="header-top">
+                <section class="trending-section" aria-label="Trending articles" x-data="{
+                    trendingArticles: [
+                        {title: 'Judul Artikel yang Trending', index: 0},
+                        {title: 'Judul Artikel Trending Lainnya', index: 1},
+                        {title: 'Judul Artikel Trending Ketiga', index: 2},
+                        {title: 'Judul Artikel Trending Keempat', index: 3}
+                    ],
+                    currentIndex: 0,
+                    autoChangeInterval: null,
+                    changeTitle(direction = 'next') {
+                        if (direction === 'next') {
+                            this.currentIndex = (this.currentIndex + 1) % this.trendingArticles.length;
+                        } else if (direction === 'prev') {
+                            this.currentIndex = (this.currentIndex - 1 + this.trendingArticles.length) % this.trendingArticles.length;
+                        }
+                    },
+                    startAutoChange() {
+                        clearInterval(this.autoChangeInterval);
+                        this.autoChangeInterval = setInterval(() => this.changeTitle('next'), 5000);
+                    },
+                    init() {
+                        if (this.trendingArticles.length > 0) {
+                            this.startAutoChange();
+                        }
+                    }
+                }">
+                    <h2 class="trending-text">TRENDING</h2>
+                    <div class="trending-title-container" role="tablist" aria-label="Trending articles">
+                        <template x-for="(article, index) in trendingArticles" :key="article.index">
+                            <button class="trending-article-title" role="tab" :aria-selected="currentIndex === index ? 'true' : 'false'" :tabindex="currentIndex === index ? '0' : '-1'" x-show="currentIndex === index" x-text="article.title" @click="currentIndex = index; startAutoChange();"></button>
+                        </template>
+                    </div>
+                    <div class="trending-nav" role="group" aria-label="Trending navigation">
+                        <button class="trending-prev" aria-label="Previous trending article" @click="changeTitle('prev'); startAutoChange();">
+                            <i class="fas fa-angle-left" aria-hidden="true"></i>
+                        </button>
+                        <button class="trending-next" aria-label="Next trending article" @click="changeTitle('next'); startAutoChange();">
+                            <i class="fas fa-angle-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </section>
+                <h1 class="site-logo-hidden">OverKing</h1>
+            </div>
+            
+            <section class="header-content" aria-label="Featured articles" x-data="{
+                allRightColumnPosts: [
+                    { id: '2', category: 'CRYPTO', title: 'Judul head 2', author: 'OverKing', date: '2025-07-11', dateText: '11 July, 2025' },
+                    { id: '3', category: 'AIRDROP', title: 'Judul head 3', author: 'OverKing', date: '2025-07-11', dateText: '11 July, 2025' },
+                    { id: '4', category: 'BELAJAR', title: 'Judul head 4', author: 'OverKing', date: '2025-07-11', dateText: '11 July, 2025' }
+                ],
+                visibleRightColumnPosts: [],
+                updatePosts() {
+                    if (window.matchMedia('(max-width: 768px)').matches) {
+                        this.visibleRightColumnPosts = this.allRightColumnPosts.slice(0, 2);
+                    } else {
+                        this.visibleRightColumnPosts = this.allRightColumnPosts;
+                    }
+                },
+                init() {
+                    this.updatePosts();
+                    window.addEventListener('resize', () => this.updatePosts());
+                }
+            }">
+                <article class="header-post header-post-1">
+                    <a href="article.html?id=1" class="post-link">
+                        <div class="post-content-overlay">
+                            <span class="category">CRYPTO</span>
+                            <h2 class="post-title">Judul head 1</h2>
+                            <p class="post-meta">
+                                <span class="author">by OverKing</span>
+                                <time datetime="2025-07-11">11 July, 2025</time>
+                            </p>
+                        </div>
+                    </a>
+                </article>
+                <div class="header-right-column">
+                    <div class="header-top-right-grid">
+                        <template x-for="post in visibleRightColumnPosts.slice(0, 2)" :key="post.id">
+                            <article class="header-post" :class="`header-post-${post.id}`">
+                                <a :href="`article.html?id=${post.id}`" class="post-link">
+                                    <div class="post-content-overlay">
+                                        <span class="category" x-text="post.category"></span>
+                                        <h3 class="post-title" x-text="post.title"></h3>
+                                        <p class="post-meta">
+                                            <span class="author" x-text="`by ${post.author}`"></span>
+                                            <time :datetime="post.date" x-text="post.dateText"></time>
+                                        </p>
+                                    </div>
+                                </a>
+                            </article>
+                        </template>
+                    </div>
+                    <template x-if="visibleRightColumnPosts.length > 2">
+                        <article class="header-post header-post-4">
+                            <a :href="`article.html?id=${visibleRightColumnPosts[2].id}`" class="post-link">
+                                <div class="post-content-overlay">
+                                    <span class="category" x-text="visibleRightColumnPosts[2].category"></span>
+                                    <h3 class="post-title" x-text="visibleRightColumnPosts[2].title"></h3>
+                                    <p class="post-meta">
+                                        <span class="author" x-text="`by ${visibleRightColumnPosts[2].author}`"></span>
+                                        <time :datetime="visibleRightColumnPosts[2].date" x-text="visibleRightColumnPosts[2].dateText"></time>
+                                    </p>
+                                </div>
+                            </a>
+                        </article>
+                    </template>
+                </div>
+            </section>
+        </header>
+        <div class="content-wrapper">
+            <main id="main-content" class="main-content" role="main">
+                <section class="latest-posts-box" aria-labelledby="latest-posts-title">
+                    <h2 id="latest-posts-title" class="section-title">Latest Post</h2>
+                    <div class="body-posts" aria-live="polite" x-data="{
+                        allPosts: [
+                            { id: 1, category: 'BELAJAR', title: 'Judul body 1', description: 'description', author: 'OverKing', date: '11 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/0000FF/FFFFFF?text=Img1', url: 'article.html?id=1' },
+                            { id: 2, category: 'CRYPTO', title: 'Judul body 2', description: 'description', author: 'OverKing', date: '11 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/FF0000/FFFFFF?text=Img2', url: 'article.html?id=2' },
+                            { id: 3, category: 'AIRDROP', title: 'Judul body 3', description: 'description', author: 'OverKing', date: '11 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/00FF00/FFFFFF?text=Img3', url: 'article.html?id=3' },
+                            { id: 4, category: 'BELAJAR', title: 'Judul body 4', description: 'description', author: 'OverKing', date: '11 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/FFFF00/000000?text=Img4', url: 'article.html?id=4' },
+                            { id: 5, category: 'CRYPTO', title: 'Judul body 5', description: 'description', author: 'OverKing', date: '11 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/FFA500/FFFFFF?text=Img5', url: 'article.html?id=5' },
+                            { id: 6, category: 'TEKNOLOGI', title: 'Judul body 6', description: 'description', author: 'OverKing', date: '12 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/6A5ACD/FFFFFF?text=Img6', url: 'article.html?id=6' },
+                            { id: 7, category: 'GAMES', title: 'Judul body 7', description: 'description', author: 'OverKing', date: '12 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/CD5C5C/FFFFFF?text=Img7', url: 'article.html?id=7' },
+                            { id: 8, category: 'BLOCKCHAIN', title: 'Judul body 8', description: 'description', author: 'OverKing', date: '12 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/4682B4/FFFFFF?text=Img8', url: 'article.html?id=8' },
+                            { id: 9, category: 'FINANSIAL', title: 'Judul body 9', description: 'description', author: 'OverKing', date: '12 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/D2B48C/000000?text=Img9', url: 'article.html?id=9' },
+                            { id: 10, category: 'CYBERSECURITY', title: 'Judul body 10', description: 'description', author: 'OverKing', date: '12 July, 2025', thumbnail: 'https://via.placeholder.com/120x80/8FBC8F/000000?text=Img10', url: 'article.html?id=10' }
+                        ],
+                        visiblePostsCount: 5,
+                        postsPerLoad: 2,
+                        showMorePosts() {
+                            this.visiblePostsCount += this.postsPerLoad;
+                        },
+                        init() {}
+                    }">
+                        <div class="posts-grid">
+                            <template x-for="(post, index) in allPosts" :key="post.id">
+                                <article class="post-item" x-show="index < visiblePostsCount" x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0 transform -translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-cloak>
+                                    <a :href="post.url" class="post-link">
+                                        <img :src="post.thumbnail" :alt="`Article thumbnail for ${post.title}`" class="post-thumbnail" loading="lazy">
+                                        <div class="post-info">
+                                            <span class="category" x-text="post.category"></span>
+                                            <h3 class="post-title" x-text="post.title"></h3>
+                                            <p class="post-description" x-text="post.description"></p>
+                                            <p class="post-author-date">
+                                                <span class="author" x-text="`By ${post.author}`"></span>
+                                                <time :datetime="post.date" x-text="post.date"></time>
+                                            </p>
+                                        </div>
+                                    </a>
+                                </article>
+                            </template>
+                        </div>
+                        <button class="load-more-btn" aria-label="Load more posts" @click="showMorePosts()" x-show="visiblePostsCount < allPosts.length">Load More</button>
+                    </div>
+                </section>
+                
+                <div class="trending-and-tools-wrapper">
+                    <section class="tools-section" aria-labelledby="tools-title">
+                        <h3 id="tools-title" class="sidebar-title">Tools</h3>
+                        <ul>
+                            <li><a href="#tool1">Tools 1</a></li>
+                            <li><a href="#tool2">Tools 2</a></li>
+                            <li><a href="#tool3">Tools 3</a></li>
+                            <li><a href="#tool4">Tools 4</a></li>
+                        </ul>
+                    </section>
+                    
+                    <section class="trending-posts-box" aria-labelledby="trending-posts-title">
+                        <h2 id="trending-posts-title" class="section-title">Trending Post</h2>
+                        <article class="article-card">
+                            <a href="article.html?id=12" class="post-link">
+                                <img src="https://via.placeholder.com/80x60/ADD8E6/000000?text=AC-Img1" alt="Article thumbnail for Judul Bawah 1" class="article-thumbnail" loading="lazy">
+                                <div class="article-info">
+                                    <h4 class="card-title">Judul Bawah 1</h4>
+                                    <p class="card-meta">
+                                        <time datetime="2025-07-11">11 July, 2025</time>
+                                    </p>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="article-card">
+                            <a href="article.html?id=13" class="post-link">
+                                <img src="https://via.placeholder.com/80x60/FFC0CB/000000?text=AC-Img2" alt="Article thumbnail for Judul Bawah 2" class="article-thumbnail" loading="lazy">
+                                <div class="article-info">
+                                    <h4 class="card-title">Judul Bawah 2</h4>
+                                    <p class="card-meta">
+                                        <time datetime="2025-07-11">11 July, 2025</time>
+                                    </p>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="article-card">
+                            <a href="article.html?id=14" class="post-link">
+                                <img src="https://via.placeholder.com/80x60/90EE90/000000?text=AC-Img3" alt="Article thumbnail for Judul Bawah 3" class="article-thumbnail" loading="lazy">
+                                <div class="article-info">
+                                    <h4 class="card-title">Judul Bawah 3</h4>
+                                    <p class="card-meta">
+                                        <time datetime="2025-07-11">11 July, 2025</time>
+                                    </p>
+                                </div>
+                            </a>
+                        </article>
+                    </section>
+                </div>
+            </main>
+            <aside class="main-sidebar" x-data="{
+                adjustSidebar() {
+                    if (window.matchMedia('(min-width: 769px)').matches) {
+                        const sidebarEl = this.$el;
+                        const footerEl = document.querySelector('.main-footer');
+                        const contentWrapperEl = document.querySelector('.content-wrapper');
+                        if (!sidebarEl || !footerEl || !contentWrapperEl) return;
+                        const sidebarRect = sidebarEl.getBoundingClientRect();
+                        const footerRect = footerEl.getBoundingClientRect();
+                        const contentRect = contentWrapperEl.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const headerHeight = document.querySelector('.main-header').offsetHeight;
+                        sidebarEl.style.width = `${sidebarEl.offsetWidth}px`;
+                        if (footerRect.top <= windowHeight && sidebarRect.bottom > footerRect.top - 20) {
+                            sidebarEl.style.position = 'absolute';
+                            sidebarEl.style.top = `${contentRect.height - sidebarRect.height - 20}px`;
+                        } else {
+                            sidebarEl.style.position = 'sticky';
+                            sidebarEl.style.top = `${headerHeight + 20}px`;
+                        }
+                    } else {
+                        const sidebarEl = this.$el;
+                        sidebarEl.style.position = '';
+                        sidebarEl.style.top = '';
+                        sidebarEl.style.width = '';
+                    }
+                }
+            }" x-init="
+                window.addEventListener('scroll', adjustSidebar);
+                window.addEventListener('resize', adjustSidebar);
+                $nextTick(() => adjustSidebar());
+            ">
+                <section class="sidebar-box follow-us">
+                    <h3 class="sidebar-title">Follow Us</h3>
+                    <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i> FACEBOOK</a>
+                    <a href="#" class="social-link twitter"><i class="fab fa-twitter"></i> TWITTER</a>
+                </section>
+                <section class="sidebar-box you-might-like">
+                    <h3 class="sidebar-title">You Might Like</h3>
+                    <div class="sidebar-post">
+                        <div class="sidebar-post-thumbnail" style="background-image: url('https://via.placeholder.com/80x60/808000/FFFFFF?text=YML-Img1');"></div>
+                        <div class="sidebar-post-info">
+                            <p class="category">AIRDROP</p>
+                            <h4 class="post-title">Judul side 1</h4>
+                            <p class="post-meta">by OverKing | 11 july, 2025</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <div class="sidebar-post-thumbnail" style="background-image: url('https://via.placeholder.com/80x60/800080/FFFFFF?text=YML-Img2');"></div>
+                        <div class="sidebar-post-info">
+                            <p class="category">CRYPTO</p>
+                            <h4 class="post-title">Judul side 2</h4>
+                            <p class="post-meta">by OverKing | 11 july, 2025</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <div class="sidebar-post-thumbnail" style="background-image: url('https://via.placeholder.com/80x60/008080/FFFFFF?text=YML-Img3');"></div>
+                        <div class="sidebar-post-info">
+                            <p class="category">BELAJAR</p>
+                            <h4 class="post-title">Judul side 3</h4>
+                            <p class="post-meta">by OverKing | 11 july, 2025</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <div class="sidebar-post-thumbnail" style="background-image: url('https://via.placeholder.com/80x60/808080/FFFFFF?text=YML-Img4');"></div>
+                        <div class="sidebar-post-info">
+                            <p class="category">AIRDROP</p>
+                            <h4 class="post-title">Judul side 4</h4>
+                            <p class="post-meta">by OverKing | 11 july, 2025</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="sidebar-box category-section">
+                    <h3 class="sidebar-title">Kategori</h3>
+                    <ul>
+                        <li><a href="#">Belajar</a></li>
+                        <li><a href="#">Crypto</a></li>
+                        <li><a href="#">Airdrop</a></li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+        
+        <footer class="main-footer" role="contentinfo">
+            <div class="footer-top-row">
+                <section class="about-us-footer" aria-labelledby="about-us-footer-title">
+                    <div class="about-us-content">
+                        <img src="https://via.placeholder.com/50x50/3e1a5f/FFFFFF?text=LOGO" alt="OverKing Logo" class="about-us-logo">
+                        <div class="about-us-text">
+                            <h3 id="about-us-footer-title" class="sidebar-title">About Us</h3>
+                            <p class="description-text">Description blogger</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="footer-social-icons" role="group" aria-label="Social media links">
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom-row">
+                <p class="copyright">Create By OverKing</p>
+                <nav class="footer-nav" role="navigation" aria-label="Footer navigation">
+                    <a href="index.html">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#disclaimer">Disclaimer</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

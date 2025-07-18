@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="style2.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>OverKing Blog - Artikel</title>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        
+</head>
+
+<body>
+    <div id="page-container">
+        <header class="main-header" x-data="{ lastScrollY: 0, isTopBarHidden: false }" x-init="
+            window.addEventListener('scroll', () => {
+                let currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                    isTopBarHidden = true;
+                } else if (currentScrollY < lastScrollY || currentScrollY <= 50) {
+                    isTopBarHidden = false;
+                }
+                lastScrollY = currentScrollY;
+            });
+            // Initial check
+            let currentScrollY = window.scrollY;
+            if (currentScrollY > 50) {
+                isTopBarHidden = true;
+            }
+        ">
+            <div class="top-bar" :class="{ 'hidden': isTopBarHidden }">
+                <div class="top-left" x-data="{ isMenuOpen: false }" @click.away="isMenuOpen = false"> <button class="menu-icon" aria-label="Buka menu navigasi" @click="isMenuOpen = !isMenuOpen">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <span class="site-logo-small">OverKing</span>
+                    <nav class="nav-menu" :class="{ 'active': isMenuOpen }" x-cloak>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Categories</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="top-right" x-data="{ isSearchOpen: false }" @click.away="isSearchOpen = false"> <span class="site-logo-temp"></span>
+                    <button class="search-icon" aria-label="Buka kotak pencarian" @click="isSearchOpen = !isSearchOpen">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <form class="search-form" action="#" method="get" :class="{ 'active': isSearchOpen }" x-cloak>
+                        <label for="search-input" class="sr-only">Kolom pencarian</label>
+                        <input type="text" id="search-input" class="search-input" placeholder="Cari artikel...">
+                        <button type="submit" class="search-submit" aria-label="Kirim pencarian">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="header-top">
+                <section class="trending-section" x-data="{
+                    trendingArticles: [
+                        'Judul Artikel yang Trending',
+                        'Judul Artikel Trending Lainnya',
+                        'Judul Artikel Trending Ketiga',
+                        'Judul Artikel Trending Keempat'
+                    ],
+                    currentIndex: 0,
+                    autoChangeInterval: null,
+                    nextArticle() {
+                        this.currentIndex = (this.currentIndex + 1) % this.trendingArticles.length;
+                    },
+                    prevArticle() {
+                        this.currentIndex = (this.currentIndex - 1 + this.trendingArticles.length) % this.trendingArticles.length;
+                    },
+                    startAutoChange() {
+                        clearInterval(this.autoChangeInterval);
+                        this.autoChangeInterval = setInterval(() => this.nextArticle(), 5000);
+                    },
+                    init() {
+                        this.$nextTick(() => { // Pastikan DOM sudah siap
+                            if (this.trendingArticles.length > 0) {
+                                // Tidak perlu menambahkan 'active' class, x-text sudah cukup
+                                this.startAutoChange();
+                            }
+                        });
+                    }
+                }">
+                    <span class="trending-text">TRENDING</span>
+                    <div class="trending-title-container">
+                        <span class="trending-article-title" x-text="trendingArticles[currentIndex]"></span>
+                    </div>
+                    <nav class="trending-nav" aria-label="Navigasi Artikel Trending">
+                        <button class="trending-prev" aria-label="Judul trending sebelumnya" @click="prevArticle(); startAutoChange();">
+                            <i class="fas fa-angle-left"></i>
+                        </button>
+                        <button class="trending-next" aria-label="Judul trending berikutnya" @click="nextArticle(); startAutoChange();">
+                            <i class="fas fa-angle-right"></i>
+                        </button>
+                    </nav>
+                </section>
+                <div class="site-logo-hidden">OverKing</div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <main class="main-content article-content">
+                <article class="article-full">
+                    <header class="article-header">
+                        <p class="category">CRYPTO</p>
+                        <h1 class="article-title">Judul Artikel Lengkap</h1>
+                        <p class="article-meta">By OverKing | 11 July, 2025</p>
+                        <figure class="article-thumbnail" style="background-image: url('https://via.placeholder.com/600x400/1e3a5f/FFFFFF?text=Artikel+Utama');">
+                        </figure>
+                    </header>
+                    <div class="article-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h2>Subjudul Artikel</h2>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        <figure>
+                            <img src="https://via.placeholder.com/300x200/3e1a5f/FFFFFF?text=Gambar+Tambahan" alt="Gambar dalam artikel" class="article-image">
+                            <figcaption>Deskripsi singkat gambar ini.</figcaption>
+                        </figure>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    </div>
+                </article>
+
+                <section class="body-posts" x-data="{
+                    allPosts: [
+                        { id: 1, category: 'TECH', title: 'Postingan Tersembunyi 1', meta: 'By Admin | 1 Jan, 2025', thumbnail: 'https://via.placeholder.com/200x150/ff0000/FFFFFF?text=Post1' },
+                        { id: 2, category: 'FINANCE', title: 'Postingan Tersembunyi 2', meta: 'By Admin | 2 Jan, 2025', thumbnail: 'https://via.placeholder.com/200x150/00ff00/FFFFFF?text=Post2' },
+                        { id: 3, category: 'HEALTH', title: 'Postingan Tersembunyi 3', meta: 'By Admin | 3 Jan, 2025', thumbnail: 'https://via.placeholder.com/200x150/0000ff/FFFFFF?text=Post3' },
+                        { id: 4, category: 'GAMING', title: 'Postingan Tersembunyi 4', meta: 'By Admin | 4 Jan, 2025', thumbnail: 'https://via.placeholder.com/200x150/ffff00/FFFFFF?text=Post4' },
+                        { id: 5, category: 'TRAVEL', title: 'Postingan Tersembunyi 5', meta: 'By Admin | 5 Jan, 2025', thumbnail: 'https://via.placeholder.com/200x150/ff00ff/FFFFFF?text=Post5' }
+                        // Tambahkan lebih banyak data postingan di sini
+                    ],
+                    visiblePostsCount: 0,
+                    postsPerLoad: 2,
+                    showMorePosts() {
+                        this.visiblePostsCount += this.postsPerLoad;
+                    },
+                    init() {
+                        // Tampilkan postsPerLoad pertama kali saat inisialisasi
+                        this.showMorePosts();
+                    }
+                }">
+                    <h2 class="section-title">Postingan Terbaru</h2>
+                    <div class="posts-grid">
+                        <template x-for="(post, index) in allPosts" :key="post.id">
+                            <div class="post-item" x-show="index < visiblePostsCount" x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0 transform -translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0">
+                                <div class="post-thumbnail" :style="`background-image: url('${post.thumbnail}');`"></div>
+                                <div class="post-info">
+                                    <p class="category" x-text="post.category"></p>
+                                    <h4 class="post-title" x-text="post.title"></h4>
+                                    <p class="post-meta" x-text="post.meta"></p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <button class="load-more-btn" @click="showMorePosts()" x-show="visiblePostsCount < allPosts.length">Load More</button>
+                </section>
+            </main>
+
+            <aside class="main-sidebar" x-data="{
+                adjustSidebar() {
+                    if (window.matchMedia('(min-width: 769px)').matches) {
+                        const sidebarEl = this.$el;
+                        const footerEl = document.querySelector('.main-footer');
+                        const contentWrapperEl = document.querySelector('.content-wrapper');
+
+                        if (!sidebarEl || !footerEl || !contentWrapperEl) return;
+
+                        const sidebarRect = sidebarEl.getBoundingClientRect();
+                        const footerRect = footerEl.getBoundingClientRect();
+                        const contentRect = contentWrapperEl.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const headerHeight = document.querySelector('.main-header').offsetHeight; // Tinggi header
+
+                        // Atur lebar sidebar untuk sticky agar tidak bergeser
+                        sidebarEl.style.width = `${sidebarEl.offsetWidth}px`;
+
+                        if (footerRect.top <= windowHeight && sidebarRect.bottom > footerRect.top - 20) {
+                            // Menentukan posisi top agar sidebar berhenti di atas footer
+                            sidebarEl.style.position = 'absolute';
+                            sidebarEl.style.top = `${contentRect.height - sidebarRect.height - 20}px`;
+                        } else {
+                            sidebarEl.style.position = 'sticky';
+                            sidebarEl.style.top = `${headerHeight + 20}px`; // Sesuaikan dengan tinggi header + sedikit padding
+                        }
+                    } else {
+                        const sidebarEl = this.$el;
+                        sidebarEl.style.position = '';
+                        sidebarEl.style.top = '';
+                        sidebarEl.style.width = ''; // Reset width
+                    }
+                }
+            }" x-init="
+                window.addEventListener('scroll', adjustSidebar);
+                window.addEventListener('resize', adjustSidebar);
+                $nextTick(() => adjustSidebar()); // Panggil saat inisialisasi
+            ">
+                <section class="sidebar-box follow-us">
+                    <h3 class="sidebar-title">Follow Us</h3>
+                    <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i> FACEBOOK</a>
+                    <a href="#" class="social-link twitter"><i class="fab fa-twitter"></i> TWITTER</a>
+                </section>
+                <section class="sidebar-box you-might-like">
+                    <h3 class="sidebar-title">You Might Like</h3>
+                    <div class="sidebar-post">
+                        <div class="sidebar-post-thumbnail" style="background-image: url('https://via.placeholder.com/80x60/808000/FFFFFF?text=YML-Img1');"></div>
+                        <div class="sidebar-post-info">
+                            <p class="category">AIRDROP</p>
+                            <h4 class="post-title">Judul side 1</h4>
+                            <p class="post-meta">by OverKing | 11 july, 2025</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <div class="sidebar-post-thumbnail" style="background-image: url('https://via.placeholder.com/80x60/800080/FFFFFF?text=YML-Img2');"></div>
+                        <div class="sidebar-post-info">
+                            <p class="category">CRYPTO</p>
+                            <h4 class="post-title">Judul side 2</h4>
+                            <p class="post-meta">by OverKing | 11 july, 2025</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <div class="sidebar-post-thumbnail" style="background-image: url('https://via.placeholder.com/80x60/008080/FFFFFF?text=YML-Img3');"></div>
+                        <div class="sidebar-post-info">
+                            <p class="category">BELAJAR</p>
+                            <h4 class="post-title">Judul side 3</h4>
+                            <p class="post-meta">by OverKing | 11 july, 2025</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-post">
+                        <div class="sidebar-post-thumbnail" style="background-image: url('https://via.placeholder.com/80x60/808080/FFFFFF?text=YML-Img4');"></div>
+                        <div class="sidebar-post-info">
+                            <p class="category">AIRDROP</p>
+                            <h4 class="post-title">Judul side 4</h4>
+                            <p class="post-meta">by OverKing | 11 july, 2025</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="sidebar-box category-section">
+                    <h3 class="sidebar-title">Kategori</h3>
+                    <ul>
+                        <li><a href="#">Belajar</a></li>
+                        <li><a href="#">Crypto</a></li>
+                        <li><a href="#">Airdrop</a></li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+
+        <footer class="main-footer">
+            <div class="footer-top-row">
+                <section class="about-us-footer">
+                    <div class="about-us-content">
+                        <img src="https://via.placeholder.com/50x50/3e1a5f/FFFFFF?text=LOGO" alt="OverKing Logo" class="about-us-logo">
+                        <div class="about-us-text">
+                            <h3 class="sidebar-title">About Us</h3>
+                            <p class="description-text">Description blogger</p>
+                        </div>
+                    </div>
+                </section>
+                <div class="footer-social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom-row">
+                <p class="copyright">Create By OverKing</p>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Disclaimer</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    </body>
+
+</html>
