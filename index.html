@@ -115,7 +115,7 @@
             </nav>
             
             <div class="header-top">
-                <section class="trending-section" aria-label="Trending articles" x-data="{
+                <div class="trending-wrapper" aria-label="Trending articles" x-data="{
                     trendingArticles: [
                         {title: 'Judul Artikel yang Trending', index: 0},
                         {title: 'Judul Artikel Trending Lainnya', index: 1},
@@ -142,20 +142,22 @@
                     }
                 }">
                     <h2 class="trending-text">TRENDING</h2>
-                    <div class="trending-title-container" role="tablist" aria-label="Trending articles">
-                        <template x-for="(article, index) in trendingArticles" :key="article.index">
-                            <button class="trending-article-title" role="tab" :aria-selected="currentIndex === index ? 'true' : 'false'" :tabindex="currentIndex === index ? '0' : '-1'" x-show="currentIndex === index" x-text="article.title" @click="currentIndex = index; startAutoChange();"></button>
-                        </template>
+                    <div class="trending-content-box">
+                        <div class="trending-title-container" role="tablist" aria-label="Trending articles">
+                            <template x-for="(article, index) in trendingArticles" :key="article.index">
+                                <button class="trending-article-title" role="tab" :aria-selected="currentIndex === index ? 'true' : 'false'" :tabindex="currentIndex === index ? '0' : '-1'" x-show="currentIndex === index" x-text="article.title" @click="currentIndex = index; startAutoChange();"></button>
+                            </template>
+                        </div>
+                        <div class="trending-nav" role="group" aria-label="Trending navigation">
+                            <button class="trending-prev" aria-label="Previous trending article" @click="changeTitle('prev'); startAutoChange();">
+                                <i class="fas fa-angle-left" aria-hidden="true"></i>
+                            </button>
+                            <button class="trending-next" aria-label="Next trending article" @click="changeTitle('next'); startAutoChange();">
+                                <i class="fas fa-angle-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="trending-nav" role="group" aria-label="Trending navigation">
-                        <button class="trending-prev" aria-label="Previous trending article" @click="changeTitle('prev'); startAutoChange();">
-                            <i class="fas fa-angle-left" aria-hidden="true"></i>
-                        </button>
-                        <button class="trending-next" aria-label="Next trending article" @click="changeTitle('next'); startAutoChange();">
-                            <i class="fas fa-angle-right" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </section>
+                </div>
                 <h1 class="site-logo-hidden">OverKing</h1>
             </div>
             
@@ -266,19 +268,33 @@
                                 </article>
                             </template>
                         </div>
-                        <button class="load-more-btn" aria-label="Load more posts" @click="showMorePosts()" x-show="visiblePostsCount < allPosts.length">Load More</button>
+                        <button class="load-more-btn" 
+                                :class="{ 'load-more-disabled': visiblePostsCount >= allPosts.length }"
+                                aria-label="Load more posts" 
+                                @click="showMorePosts()" 
+                                :disabled="visiblePostsCount >= allPosts.length"
+                                x-text="visiblePostsCount >= allPosts.length ? 'No More Content' : 'Load More'">
+                        </button>
                     </div>
                 </section>
                 
                 <div class="trending-and-tools-wrapper">
                     <section class="tools-section" aria-labelledby="tools-title">
                         <h3 id="tools-title" class="sidebar-title">Tools</h3>
-                        <ul>
-                            <li><a href="#tool1">Tools 1</a></li>
-                            <li><a href="#tool2">Tools 2</a></li>
-                            <li><a href="#tool3">Tools 3</a></li>
-                            <li><a href="#tool4">Tools 4</a></li>
-                        </ul>
+                        <div class="tools-container">
+                            <div class="tool-box">
+                                <a href="#tool1">Tools 1</a>
+                            </div>
+                            <div class="tool-box">
+                                <a href="#tool2">Tools 2</a>
+                            </div>
+                            <div class="tool-box">
+                                <a href="#tool3">Tools 3</a>
+                            </div>
+                            <div class="tool-box">
+                                <a href="#tool4">Tools 4</a>
+                            </div>
+                        </div>
                     </section>
                     
                     <section class="trending-posts-box" aria-labelledby="trending-posts-title">
