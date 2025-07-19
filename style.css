@@ -11,7 +11,7 @@ body {
 * {
     box-sizing: border-box;
 }
-
+ 
 img {
     max-width: 100%;
     height: auto;
@@ -154,7 +154,6 @@ ul {
 .main-content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
 }
 
 .trending-and-tools-wrapper {
@@ -322,6 +321,10 @@ ul {
     background-color: #253340;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.body-posts .post-item:last-of-type {
+    margin-bottom: 0;
 }
 
 .body-posts .post-thumbnail {
