@@ -4,6 +4,41 @@
     box-sizing: border-box;
 }
 
+/* Optimasi performa dan accessibility */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+button:focus,
+a:focus {
+    outline: 2px solid #64b5f6;
+    outline-offset: 2px;
+}
+
+/* Optimasi loading state */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Smooth scrolling untuk navigasi */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Optimasi font loading */
+body {
+    font-display: swap;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -271,71 +306,94 @@ ul {
 .posts-grid {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 5px;
     min-height: auto;
+    margin-bottom: 15px;
 }
 
 .body-posts .post-item {
     background-color: #1e2a36;
-    padding: 15px 10px;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 8px;
     border: 1px solid #3c526b;
-    border-bottom: 1px solid #3c526b;
     display: flex;
     gap: 15px;
-    align-items: center;
-    transition: opacity 0.5s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
 }
 
 .body-posts .post-item:hover {
     background-color: #253340;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .body-posts .post-item:last-of-type {
-    border-bottom: none;
-    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .body-posts .post-thumbnail {
     width: 120px;
     min-width: 120px;
     height: 80px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 3px;
+    border-radius: 6px;
     flex-shrink: 0;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.body-posts .post-item:hover .post-thumbnail {
+    transform: scale(1.05);
 }
 
 .body-posts .post-info {
     flex-grow: 1;
     max-width: calc(100% - 135px);
-    padding: 0 5px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .body-posts .post-item .category {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #90caf9;
     text-transform: uppercase;
-    margin-bottom: 5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 0;
 }
 
 .body-posts .post-item .post-title {
-    font-size: 1.2em;
-    margin: 0 0 5px;
+    font-size: 1.1em;
+    margin: 0;
     color: #ffffff;
+    line-height: 1.4;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.body-posts .post-item:hover .post-title {
+    color: #64b5f6;
 }
 
 .body-posts .post-item .post-description {
-    font-size: 0.9em;
-    color: #f0f0f0;
-    margin-bottom: 5px;
+    font-size: 0.85em;
+    color: #d0d0d0;
+    margin: 0;
+    line-height: 1.5;
+    opacity: 0.9;
 }
 
 .body-posts .post-item .post-author-date {
     font-size: 0.7em;
     color: #b0b0b0;
+    margin: 0;
+    padding-top: 4px;
 }
 
 /* --- Trending Posts --- */
@@ -669,9 +727,10 @@ ul {
 @media (max-width: 768px) {
     .content-wrapper {
         grid-template-columns: 1fr;
-        padding-top: 60px;
+        padding: 15px;
+        padding-top: 75px;
+        gap: 15px;
         min-height: auto;
-        padding-bottom: 60px;
     }
 
     .main-sidebar {
@@ -682,41 +741,56 @@ ul {
         top: unset !important;
         right: unset !important;
         left: unset !important;
+        order: 2;
     }
 
     .main-content {
         grid-template-columns: 1fr;
         width: 100%;
+        order: 1;
     }
 
     .header-content {
         display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 10px;
-        margin-bottom: 15px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
         align-items: start;
     }
 
     .header-post {
         position: relative;
         background-position: center;
-        border-radius: 5px;
+        border-radius: 8px;
         overflow: hidden;
+        min-height: 200px;
     }
 
     .header-post-1 {
-        padding-bottom: 66.67%;
+        padding-bottom: 60%;
         background-image: url('https://via.placeholder.com/600x400/1e3a5f/FFFFFF?text=Head+1');
+        grid-row: 1;
+    }
+
+    .header-right-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        grid-row: 2;
+    }
+
+    .header-top-right-grid {
+        display: contents;
     }
 
     .header-post-2 {
         background-image: url('https://via.placeholder.com/200x150/808000/FFFFFF?text=Head+2');
-        padding-bottom: 75%;
+        padding-bottom: 70%;
     }
 
     .header-post-3 {
         background-image: url('https://via.placeholder.com/200x150/008080/FFFFFF?text=Head+3');
-        padding-bottom: 75%;
+        padding-bottom: 70%;
     }
 
     .post-content-overlay {
@@ -724,114 +798,116 @@ ul {
         bottom: 0;
         width: 100%;
         padding: 15px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
         color: #fff;
     }
 
-    .header-post-1 .post-content-overlay {
-        padding: 15px;
-    }
-
     .header-post .category {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: bold;
         margin-bottom: 6px;
+        letter-spacing: 0.5px;
     }
 
     .header-post-1 .post-title {
         font-size: 18px;
         font-weight: bold;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
+        line-height: 1.3;
     }
 
     .header-post:not(.header-post-1) .post-title {
         font-size: 14px;
-        font-weight: normal;
-        margin-bottom: 4px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        line-height: 1.3;
     }
 
     .header-post .post-meta {
-        font-size: 12px;
-        color: #ccc;
+        font-size: 11px;
+        color: #ddd;
+        opacity: 0.9;
     }
 
-    .header-right-column {
-        grid-template-rows: unset;
-    }
-
-    .header-top-right-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 0;
-    }
-
-    .site-logo-small {
-        display: block;
-    }
-
-    .trending-section {
+    .trending-wrapper {
         flex-direction: row;
         align-items: center;
-        gap: 5px;
+        gap: 8px;
         font-size: 0.9em;
+        padding: 8px 0;
     }
 
     .trending-text {
-        padding: 3px 6px;
-        font-size: 0.8em;
+        padding: 4px 8px;
+        font-size: 0.75em;
+    }
+
+    .trending-content-box {
+        padding: 4px 12px;
     }
 
     .trending-nav {
         font-size: 0.9em;
-        gap: 3px;
+        gap: 6px;
     }
 
     .trending-prev,
     .trending-next {
-        padding: 3px;
+        padding: 6px;
     }
 
     .nav-menu {
-        width: calc(100% - 40px);
-        left: 20px;
+        width: calc(100% - 30px);
+        left: 15px;
     }
 
     .search-form {
-        right: 20px;
-        width: calc(100% - 40px);
+        right: 15px;
+        width: calc(100% - 30px);
     }
 
     .article-header .article-title {
-        font-size: 1.6em;
+        font-size: 1.8em;
+        line-height: 1.3;
     }
 
     .article-header .article-thumbnail {
-        height: 200px;
+        height: 220px;
     }
 
     .article-body h2 {
-        font-size: 1.3em;
+        font-size: 1.4em;
+        margin: 25px 0 15px;
     }
 
     .article-body .article-image {
         max-width: 100%;
+        margin: 20px 0;
     }
 
-    /* Penyesuaian untuk Latest Post (Overlay) */
+    .article-body p {
+        margin-bottom: 18px;
+        line-height: 1.7;
+    }
+
+    /* Optimasi Latest Posts untuk Mobile */
     .body-posts .post-item {
         position: relative;
         padding: 0;
-        margin: 10px 5px;
+        margin: 8px 0;
         flex-direction: column;
         align-items: flex-start;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .body-posts .post-thumbnail {
         width: 100%;
-        height: 150px;
-        display: block;
+        height: 180px;
         object-fit: cover;
         margin-bottom: 0;
+        border-radius: 0;
     }
 
     .body-posts .post-info {
@@ -839,48 +915,59 @@ ul {
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 10px 15px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        padding: 15px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 80%, transparent 100%);
         color: #ffffff;
         max-width: 100%;
+        gap: 4px;
     }
 
     .body-posts .post-item .post-title {
-        font-size: 0.95em;
-        line-height: 1.2;
-        margin: 0 0 5px;
+        font-size: 1em;
+        line-height: 1.3;
+        margin: 0 0 6px;
         color: #ffffff;
+        font-weight: 600;
     }
 
     .body-posts .post-item .category {
-        font-size: 0.75em;
-        margin-bottom: 5px;
+        font-size: 0.7em;
+        margin-bottom: 4px;
+        font-weight: 700;
     }
 
     .body-posts .post-item .post-description {
         font-size: 0.8em;
-        display: none;
+        display: block;
+        line-height: 1.4;
+        margin: 0 0 6px;
+        opacity: 0.9;
     }
 
     .body-posts .post-item .post-author-date {
         font-size: 0.65em;
+        margin: 0;
+        opacity: 0.8;
     }
 
-    /* Penyesuaian untuk Trending Post (Overlay) */
+    /* Optimasi Trending Posts untuk Mobile */
     .article-card {
         position: relative;
         padding: 0;
-        margin: 10px 5px;
+        margin: 8px 0;
         flex-direction: column;
         align-items: flex-start;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .article-card .article-thumbnail {
         width: 100%;
-        height: 120px;
-        display: block;
+        height: 140px;
         object-fit: cover;
         margin-bottom: 0;
+        border-radius: 0;
     }
 
     .article-card .article-info {
@@ -888,38 +975,44 @@ ul {
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 10px 15px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        padding: 12px 15px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 70%, transparent 100%);
         color: #ffffff;
         max-width: 100%;
     }
 
     .article-card .card-title {
-        font-size: 0.95em;
-        line-height: 1.2;
-        margin: 0 0 5px;
+        font-size: 0.9em;
+        line-height: 1.3;
+        margin: 0 0 6px;
         color: #ffffff;
+        font-weight: 600;
     }
 
     .article-card .card-meta {
         font-size: 0.65em;
+        margin: 0;
+        opacity: 0.8;
     }
 
-    /* Penyesuaian untuk You Might Like (Overlay) */
+    /* Optimasi Sidebar untuk Mobile */
     .main-sidebar .sidebar-post {
         position: relative;
         padding: 0;
-        margin: 10px 5px;
+        margin: 8px 0;
         flex-direction: column;
         align-items: flex-start;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .main-sidebar .sidebar-post-thumbnail {
         width: 100%;
-        height: 120px;
+        height: 140px;
         background-size: cover;
         background-position: center;
-        border-radius: 3px;
+        border-radius: 0;
         margin-bottom: 0;
     }
 
@@ -928,193 +1021,381 @@ ul {
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 10px 15px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        padding: 12px 15px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 70%, transparent 100%);
         color: #ffffff;
         max-width: 100%;
     }
 
     .main-sidebar .sidebar-post .post-title {
         font-size: 0.9em;
-        line-height: 1.2;
-        margin: 0 0 5px;
+        line-height: 1.3;
+        margin: 0 0 6px;
         color: #ffffff;
+        font-weight: 600;
     }
 
     .main-sidebar .sidebar-post .category {
         font-size: 0.7em;
-        margin-bottom: 5px;
+        margin-bottom: 4px;
+        font-weight: 700;
     }
 
     .main-sidebar .sidebar-post .post-meta {
         font-size: 0.65em;
+        margin: 0;
+        opacity: 0.8;
+    }
+
+    /* Optimasi Tools Section */
+    .tools-container {
+        gap: 6px;
+    }
+
+    .tool-box {
+        padding: 10px 12px;
+        border-radius: 6px;
+    }
+
+    .tool-box a {
+        font-size: 0.9em;
+    }
+
+    /* Optimasi Layout Grid */
+    .trending-and-tools-wrapper {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .latest-posts-box,
+    .trending-posts-box {
+        margin-bottom: 8px;
+    }
+
+    .section-title,
+    .sidebar-title {
+        font-size: 1.3em;
+        margin-bottom: 12px;
     }
 }
 
 /* Breakpoint untuk layar di bawah atau sama dengan 480px (Mobile Kecil) */
 @media (max-width: 480px) {
+    #page-container {
+        padding-top: 15px;
+    }
 
     .main-header,
     .content-wrapper,
     .main-footer,
     .top-bar {
-        padding: 15px;
+        padding: 12px;
+    }
+
+    .content-wrapper {
+        padding-top: 70px;
+        gap: 12px;
     }
 
     .menu-icon,
     .search-icon {
-        font-size: 1.3em;
+        font-size: 1.2em;
     }
 
     .site-logo-small {
-        font-size: 1.3em;
+        font-size: 1.2em;
     }
 
     .trending-text {
-        padding: 2px 5px;
-        font-size: 0.7em;
+        padding: 3px 6px;
+        font-size: 0.65em;
+    }
+
+    .trending-content-box {
+        padding: 3px 8px;
     }
 
     .trending-nav {
-        font-size: 0.8em;
-        gap: 2px;
+        font-size: 0.75em;
+        gap: 3px;
     }
 
     .trending-prev,
     .trending-next {
-        padding: 2px;
+        padding: 4px;
     }
 
     .section-title,
     .sidebar-title {
-        font-size: 1.5em;
+        font-size: 1.2em;
+        margin-bottom: 10px;
     }
 
-    /* Ukuran font judul untuk berbagai komponen yang lebih kecil */
-    .header-post .post-title,
-    .body-posts .post-item .post-title,
-    .article-card .card-title,
-    .main-sidebar .sidebar-post .post-title {
+    /* Header Content Optimasi untuk 480px */
+    .header-content {
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .header-post {
+        min-height: 160px;
+        border-radius: 6px;
+    }
+
+    .header-post-1 {
+        padding-bottom: 55%;
+    }
+
+    .header-right-column {
+        gap: 10px;
+    }
+
+    .header-post-2,
+    .header-post-3 {
+        padding-bottom: 65%;
+    }
+
+    .post-content-overlay {
+        padding: 12px;
+    }
+
+    .header-post .category {
+        font-size: 10px;
+        margin-bottom: 4px;
+    }
+
+    .header-post-1 .post-title {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .header-post:not(.header-post-1) .post-title {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+
+    .header-post .post-meta {
+        font-size: 10px;
+    }
+
+    /* Latest Posts Optimasi 480px */
+    .body-posts .post-item {
+        margin: 6px 0;
+        border-radius: 8px;
+    }
+
+    .body-posts .post-thumbnail {
+        height: 160px;
+    }
+
+    .body-posts .post-info {
+        padding: 12px;
+    }
+
+    .body-posts .post-item .post-title {
         font-size: 0.9em;
-        line-height: 1.2;
-        color: #ffffff;
+        margin-bottom: 5px;
     }
 
-    .body-posts .post-item .category,
-    .main-sidebar .sidebar-post .category {
-        font-size: 0.7em;
+    .body-posts .post-item .category {
+        font-size: 0.65em;
+        margin-bottom: 3px;
     }
 
     .body-posts .post-item .post-description {
         font-size: 0.75em;
+        margin-bottom: 5px;
+        line-height: 1.3;
     }
 
-    /* Ukuran font meta info untuk berbagai komponen yang lebih kecil
-*/
-    .body-posts .post-item .post-author-date,
-    .article-card .card-meta,
+    .body-posts .post-item .post-author-date {
+        font-size: 0.6em;
+    }
+
+    /* Trending Posts Optimasi 480px */
+    .article-card {
+        margin: 6px 0;
+        border-radius: 8px;
+    }
+
+    .article-card .article-thumbnail {
+        height: 120px;
+    }
+
+    .article-card .article-info {
+        padding: 10px 12px;
+    }
+
+    .article-card .card-title {
+        font-size: 0.85em;
+        margin-bottom: 4px;
+    }
+
+    .article-card .card-meta {
+        font-size: 0.6em;
+    }
+
+    /* Sidebar Optimasi 480px */
+    .main-sidebar .sidebar-post {
+        margin: 6px 0;
+        border-radius: 8px;
+    }
+
+    .main-sidebar .sidebar-post-thumbnail {
+        height: 120px;
+    }
+
+    .main-sidebar .sidebar-post-info {
+        padding: 10px 12px;
+    }
+
+    .main-sidebar .sidebar-post .post-title {
+        font-size: 0.8em;
+        margin-bottom: 4px;
+    }
+
+    .main-sidebar .sidebar-post .category {
+        font-size: 0.65em;
+        margin-bottom: 3px;
+    }
+
     .main-sidebar .sidebar-post .post-meta {
         font-size: 0.6em;
     }
 
-    /* Ukuran thumbnail yang lebih kecil */
-    .body-posts .post-thumbnail,
-    .article-card .article-thumbnail,
-    .main-sidebar .sidebar-post-thumbnail {
-        width: 100%;
-        height: 120px;
-        margin-bottom: 10px;
-    }
-
-    /* Override untuk overlay */
-    .body-posts .post-item .post-thumbnail,
-    .article-card .article-thumbnail,
-    .main-sidebar .sidebar-post-thumbnail {
-        height: 120px;
-        margin-bottom: 0;
-    }
-
+    /* Footer Optimasi */
     .footer-top-row {
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
         text-align: center;
-        gap: 15px;
+        gap: 12px;
+    }
+
+    .about-us-footer {
+        text-align: center;
+    }
+
+    .about-us-content {
+        justify-content: center;
+        gap: 10px;
     }
 
     .footer-social-icons {
         margin-left: 0;
-        margin-top: 10px;
         justify-content: center;
         width: 100%;
+        gap: 12px;
     }
 
     .footer-social-icons .social-icon {
-        font-size: 1em;
+        font-size: 1.1em;
     }
 
     .footer-bottom-row {
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
         text-align: center;
-        gap: 10px;
+        gap: 8px;
     }
 
     .main-footer .footer-nav {
         margin-left: 0;
         justify-content: center;
         width: 100%;
-        gap: 5px;
+        gap: 4px;
+        flex-wrap: wrap;
     }
 
     .main-footer .footer-nav a {
-        margin: 0 5px;
+        margin: 2px 4px;
         font-size: 0.7em;
+        padding: 4px 6px;
     }
 
     .main-footer .copyright {
         font-size: 0.7em;
         text-align: center;
         width: 100%;
+        order: 2;
     }
 
+    /* Tools Section Optimasi */
+    .tools-container {
+        gap: 5px;
+    }
+
+    .tool-box {
+        padding: 8px 10px;
+        border-radius: 5px;
+    }
+
+    .tool-box a {
+        font-size: 0.8em;
+    }
+
+    /* Load More Button */
+    .load-more-btn {
+        padding: 12px;
+        font-size: 1em;
+        border-radius: 6px;
+        margin-top: 8px;
+    }
+
+    /* Search Input */
     .search-input {
         width: 100%;
+        padding: 10px;
+        font-size: 0.9em;
     }
 
+    /* Article Page Specific */
     .article-header .article-title {
-        font-size: 1.4em;
+        font-size: 1.3em;
+        line-height: 1.2;
     }
 
     .article-header .article-thumbnail {
-        height: 150px;
+        height: 180px;
+        border-radius: 6px;
     }
 
     .article-body {
-        font-size: 0.95em;
-    }
-
-    /* Penyesuaian spesifik untuk thumbnail overlay di 480px */
-    .body-posts .post-thumbnail {
-        height: 120px;
-    }
-
-    .body-posts .post-item .post-title {
         font-size: 0.9em;
+        line-height: 1.6;
     }
 
-    .article-card .article-thumbnail {
-        height: 100px;
+    .article-body h2 {
+        font-size: 1.2em;
+        margin: 20px 0 12px;
     }
 
-    .article-card .card-title {
-        font-size: 0.9em;
+    .article-body p {
+        margin-bottom: 16px;
     }
 
-    .main-sidebar .sidebar-post-thumbnail {
-        height: 100px;
+    .article-body .article-image {
+        margin: 15px 0;
+        border-radius: 6px;
     }
 
-    .main-sidebar .sidebar-post .post-title {
-        font-size: 0.85em;
+    /* Navigation Improvements */
+    .nav-menu {
+        width: calc(100% - 25px);
+        left: 12px;
+        border-radius: 6px;
+    }
+
+    .search-form {
+        right: 12px;
+        width: calc(100% - 25px);
+        border-radius: 6px;
+    }
+
+    /* Trending Wrapper */
+    .trending-wrapper {
+        padding: 6px 0;
+        gap: 6px;
+    }
+
+    .trending-title-container {
+        padding: 4px 6px;
     }
 }

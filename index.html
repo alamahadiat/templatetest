@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,6 @@
     <link rel="manifest" href="/site.webmanifest">
     
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -226,6 +225,7 @@
                 </div>
             </section>
         </header>
+        
         <div class="content-wrapper">
             <main id="main-content" class="main-content" role="main">
                 <section class="latest-posts-box" aria-labelledby="latest-posts-title">
@@ -335,6 +335,7 @@
                     </section>
                 </div>
             </main>
+            
             <aside class="main-sidebar" x-data="{
                 adjustSidebar() {
                     if (window.matchMedia('(min-width: 769px)').matches) {
@@ -347,13 +348,15 @@
                         const contentRect = contentWrapperEl.getBoundingClientRect();
                         const windowHeight = window.innerHeight;
                         const headerHeight = document.querySelector('.main-header').offsetHeight;
-                        sidebarEl.style.width = `${sidebarEl.offsetWidth}px`;
+                        
                         if (footerRect.top <= windowHeight && sidebarRect.bottom > footerRect.top - 20) {
                             sidebarEl.style.position = 'absolute';
                             sidebarEl.style.top = `${contentRect.height - sidebarRect.height - 20}px`;
+                            sidebarEl.style.width = '300px';
                         } else {
                             sidebarEl.style.position = 'sticky';
                             sidebarEl.style.top = `${headerHeight + 20}px`;
+                            sidebarEl.style.width = '300px';
                         }
                     } else {
                         const sidebarEl = this.$el;
@@ -375,45 +378,45 @@
                 <section class="sidebar-box you-might-like">
                     <h3 class="sidebar-title">You Might Like</h3>
                     <div class="sidebar-post">
-    <a href="article.html?id=side1" class="post-link">
-        <img src="https://via.placeholder.com/80x60/808000/FFFFFF?text=YML-Img1" alt="Article thumbnail for Judul side 1" class="sidebar-post-thumbnail" loading="lazy">
-        <div class="sidebar-post-info">
-            <p class="category">AIRDROP</p>
-            <h4 class="post-title">Judul side 1</h4>
-            <p class="post-meta">by OverKing | 11 July, 2025</p>
-        </div>
-    </a>
-</div>
+                        <a href="article.html?id=side1" class="post-link">
+                            <img src="https://via.placeholder.com/80x60/808000/FFFFFF?text=YML-Img1" alt="Article thumbnail for Judul side 1" class="sidebar-post-thumbnail" loading="lazy">
+                            <div class="sidebar-post-info">
+                                <p class="category">AIRDROP</p>
+                                <h4 class="post-title">Judul side 1</h4>
+                                <p class="post-meta">by OverKing | 11 July, 2025</p>
+                            </div>
+                        </a>
+                    </div>
                     <div class="sidebar-post">
-    <a href="article.html?id=side1" class="post-link">
-        <img src="https://via.placeholder.com/80x60/808000/FFFFFF?text=YML-Img1" alt="Article thumbnail for Judul side 1" class="sidebar-post-thumbnail" loading="lazy">
-        <div class="sidebar-post-info">
-            <p class="category">AIRDROP</p>
-            <h4 class="post-title">Judul side 1</h4>
-            <p class="post-meta">by OverKing | 11 July, 2025</p>
-        </div>
-    </a>
-</div>
-                   <div class="sidebar-post">
-    <a href="article.html?id=side1" class="post-link">
-        <img src="https://via.placeholder.com/80x60/808000/FFFFFF?text=YML-Img1" alt="Article thumbnail for Judul side 1" class="sidebar-post-thumbnail" loading="lazy">
-        <div class="sidebar-post-info">
-            <p class="category">AIRDROP</p>
-            <h4 class="post-title">Judul side 1</h4>
-            <p class="post-meta">by OverKing | 11 July, 2025</p>
-        </div>
-    </a>
-</div>
-                   <div class="sidebar-post">
-    <a href="article.html?id=side1" class="post-link">
-        <img src="https://via.placeholder.com/80x60/808000/FFFFFF?text=YML-Img1" alt="Article thumbnail for Judul side 1" class="sidebar-post-thumbnail" loading="lazy">
-        <div class="sidebar-post-info">
-            <p class="category">AIRDROP</p>
-            <h4 class="post-title">Judul side 1</h4>
-            <p class="post-meta">by OverKing | 11 July, 2025</p>
-        </div>
-    </a>
-</div>
+                        <a href="article.html?id=side2" class="post-link">
+                            <img src="https://via.placeholder.com/80x60/800080/FFFFFF?text=YML-Img2" alt="Article thumbnail for Judul side 2" class="sidebar-post-thumbnail" loading="lazy">
+                            <div class="sidebar-post-info">
+                                <p class="category">CRYPTO</p>
+                                <h4 class="post-title">Judul side 2</h4>
+                                <p class="post-meta">by OverKing | 11 July, 2025</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="article.html?id=side3" class="post-link">
+                            <img src="https://via.placeholder.com/80x60/008080/FFFFFF?text=YML-Img3" alt="Article thumbnail for Judul side 3" class="sidebar-post-thumbnail" loading="lazy">
+                            <div class="sidebar-post-info">
+                                <p class="category">BELAJAR</p>
+                                <h4 class="post-title">Judul side 3</h4>
+                                <p class="post-meta">by OverKing | 11 July, 2025</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="sidebar-post">
+                        <a href="article.html?id=side4" class="post-link">
+                            <img src="https://via.placeholder.com/80x60/808080/FFFFFF?text=YML-Img4" alt="Article thumbnail for Judul side 4" class="sidebar-post-thumbnail" loading="lazy">
+                            <div class="sidebar-post-info">
+                                <p class="category">AIRDROP</p>
+                                <h4 class="post-title">Judul side 4</h4>
+                                <p class="post-meta">by OverKing | 11 July, 2025</p>
+                            </div>
+                        </a>
+                    </div>
                 </section>
                 <section class="sidebar-box category-section">
                     <h3 class="sidebar-title">Kategori</h3>
