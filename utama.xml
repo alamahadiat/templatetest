@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+<head>
+  <b:include data='blog' name='all-head-content' />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport' />
+  <meta content='Blog tentang crypto, airdrop, dan teknologi terkini' name='description' />
+  <meta content='crypto, airdrop, blockchain, teknologi, bitcoin, ethereum' name='keywords' />
+  <meta content='OverKing' name='author' />
+  <meta content='index, follow' name='robots' />
+  
+  <meta expr:content='data:blog.pageName ? data:blog.pageName + " - " + data:blog.title : data:blog.title' property='og:title' />
+  <meta expr:content='data:blog.metaDescription ? data:blog.metaDescription : "Blog tentang crypto, airdrop, dan teknologi terkini"' property='og:description' />
+  <meta content='website' property='og:type' />
+  <meta expr:content='data:blog.url' property='og:url' />
+  <meta expr:content='data:blog.postImageThumbnailUrl ? data:blog.postImageThumbnailUrl : "https://via.placeholder.com/1200x630/3e1a5f/FFFFFF?text=OverKing+Blog"' property='og:image' />
+  
+  <meta content='summary_large_image' name='twitter:card' />
+  <meta expr:content='data:blog.pageName ? data:blog.pageName + " - " + data:blog.title : data:blog.title' name='twitter:title' />
+  <meta expr:content='data:blog.metaDescription ? data:blog.metaDescription : "Blog tentang crypto, airdrop, dan teknologi terkini"' name='twitter:description' />
+  <meta expr:content='data:blog.postImageThumbnailUrl ? data:blog.postImageThumbnailUrl : "https://via.placeholder.com/1200x630/3e1a5f/FFFFFF?text=OverKing+Blog"' name='twitter:image' />
+  
+  <link href='URL_FAVICON_ANDA_DI_SINI' rel='icon' type='image/x-icon' />
+  <link href='URL_APPLE_TOUCH_ICON_ANDA_DI_SINI' rel='apple-touch-icon' />
+  
+  <link href='https://cdnjs.cloudflare.com' rel='preconnect' />
+  <link href='https://via.placeholder.com' rel='preconnect' />
+  
+  <link href='https://cdn.jsdelivr.net/gh/alamahadiat/templatetest@main/style.css' rel='stylesheet' type='text/css' />
+  
+  <link crossorigin='anonymous' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' integrity='sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==' referrerpolicy='no-referrer' rel='stylesheet' />
+  
+  <style></style>
+  
+  <script type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "<data:blog.title/>",
+      "description": "<data:blog.metaDescription/>",
+      "url": "<data:blog.url/>",
+      "author": {
+        "@type": "Person",
+        "name": "<data:blog.author/>"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "<data:blog.title/>",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://via.placeholder.com/50x50/3e1a5f/FFFFFF?text=LOGO"
+        }
+      }
+    }
+  </script>
+  
+  <title>
+    <data:blog.pageTitle />
+  </title>
+  
+  <script defer='defer' src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'></script>
+</head>
+
+<body>
+  <div id='page-container'>
+    <a class='skip-link' href='#main-content'>Skip to main content</a>
+    
+    <header class='main-header' role='banner' x-data="{
+            lastScrollY: 0,
+            isTopBarHidden: false,
+            headerHeight: 0,
+            init() {
+                window.addEventListener('scroll', () => {
+                    let currentScrollY = window.scrollY;
+                    if (currentScrollY > this.lastScrollY && currentScrollY > 50) {
+                        this.isTopBarHidden = true;
+                    } else if (currentScrollY < this.lastScrollY || currentScrollY <= 50) {
+                        this.isTopBarHidden = false;
+                    }
+                    this.lastScrollY = currentScrollY;
+                });
+                if (window.scrollY > 50) {
+                    this.isTopBarHidden = true;
+                }
+                this.$nextTick(() => {
+                    this.headerHeight = this.$el.offsetHeight;
+                });
+            }
+        }">
+      <div class='top-bar' :class="{ 'hidden': isTopBarHidden }" x-cloak>
+        <div class='top-left' x-data="{ isMenuOpen: false }" @click.away="isMenuOpen = false">
+          <button class='menu-toggle' aria-controls='nav-menu' :aria-expanded='isMenuOpen.toString()' aria-label='Toggle navigation menu' @click='isMenuOpen = !isMenuOpen'>
+            <i aria-hidden='true' class='fas fa-bars menu-icon'></i>
+          </button>
+          <a class='site-logo-small' expr:href='data:blog.homepageUrl'>
+            <data:blog.title />
+          </a>
+          
+          <b:section class='main-nav-section' id='main-nav' maxwidgets='1' showaddelement='no'>
+            <b:widget id='LinkList1' locked='false' title='Main Navigation' type='LinkList'>
+              <b:includable id='main'>
+                <ul class='nav-menu' id='nav-menu' :class="{ 'active': isMenuOpen }" x-cloak>
+                  <b:loop values='data:links' var='link'>
+                    <li><a expr:href='data:link.url' expr:aria-current='data:blog.url == data:link.url ? &quot;page&quot; : &quot;false&quot;'>
+                        <data:link.name />
+                      </a></li>
+                  </b:loop>
+                </ul>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+        <div class='top-right' x-data="{ isSearchOpen: false }" @click.away="isSearchOpen = false">
+          <span aria-hidden='true' class='site-logo-temp'></span>
+          <button class='search-toggle' aria-controls='search-form' :aria-expanded='isSearchOpen.toString()' aria-label='Toggle search' @click='isSearchOpen = !isSearchOpen; $nextTick(() => { if(isSearchOpen) $refs.searchInput.focus(); });'>
+            <i aria-hidden='true' class='fas fa-search search-icon'></i>
+          </button>
+          
+          <b:section class='search-form-section' id='search-form-sec' maxwidgets='1' showaddelement='no'>
+            <b:widget id='BlogSearch1' locked='false' title='Search Box' type='BlogSearch'>
+              <b:includable id='main'>
+                <form class='search-form' id='search-form' expr:action='data:blog.searchUrl' method='get' role='search' :class="{ 'active': isSearchOpen }" x-cloak>
+                  <label class='visually-hidden' for='search-input'>
+                    <data:messages.search />
+                  </label>
+                  <input class='search-input' expr:placeholder='data:messages.searchThisBlog' expr:value='data:data.searchTerm' id='search-input' name='q' required='required' type='search' x-ref='searchInput' />
+                  <button aria-label='Submit search' class='search-submit' type='submit'>
+                    <i aria-hidden='true' class='fas fa-search'></i>
+                  </button>
+                </form>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+      </div>
+      
+      <div class='header-top'>
+        <div aria-label='Trending articles' class='trending-wrapper' x-data="{
+                    trendingArticles: [
+                        {title: 'Judul Artikel yang Trending', index: 0},
+                        {title: 'Judul Artikel Trending Lainnya', index: 1},
+                        {title: 'Judul Artikel Trending Ketiga', index: 2},
+                        {title: 'Judul Artikel Trending Keempat', index: 3}
+                    ],
+                    currentIndex: 0,
+                    autoChangeInterval: null,
+                    changeTitle(direction = 'next') {
+                        if (direction === 'next') {
+                            this.currentIndex = (this.currentIndex + 1) % this.trendingArticles.length;
+                        } else if (direction === 'prev') {
+                            this.currentIndex = (this.currentIndex - 1 + this.trendingArticles.length) % this.trendingArticles.length;
+                        }
+                    },
+                    startAutoChange() {
+                        clearInterval(this.autoChangeInterval);
+                        this.autoChangeInterval = setInterval(() => this.changeTitle('next'), 5000);
+                    },
+                    init() {
+                        if (this.trendingArticles.length > 0) {
+                            this.startAutoChange();
+                        }
+                    }
+                }">
+          <h2 class='trending-text'>TRENDING</h2>
+          <div class='trending-content-box'>
+            <div aria-label='Trending articles' class='trending-title-container' role='tablist'>
+              <template x-for='(article, index) in trendingArticles' :key='article.index'>
+                <button class='trending-article-title' role='tab' :aria-selected='currentIndex === index ? &quot;true&quot; : &quot;false&quot;' :tabindex='currentIndex === index ? &quot;0&quot; : &quot;-1&quot;' x-show='currentIndex === index' x-text='article.title' @click='currentIndex = index; startAutoChange();'></button>
+              </template>
+            </div>
+            <div aria-label='Trending navigation' class='trending-nav' role='group'>
+              <button aria-label='Previous trending article' class='trending-prev' @click='changeTitle(&quot;prev&quot;); startAutoChange();'>
+                <i aria-hidden='true' class='fas fa-angle-left'></i>
+              </button>
+              <button aria-label='Next trending article' class='trending-next' @click='changeTitle(&quot;next&quot;); startAutoChange();'>
+                <i aria-hidden='true' class='fas fa-angle-right'></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <h1 class='site-logo-hidden'>
+          <data:blog.title />
+        </h1>
+      </div>
+      
+      <b:section class='header-posts-section' id='header-posts-sec' maxwidgets='1' showaddelement='no'>
+        <b:widget id='FeaturedPosts' locked='false' title='Featured Posts' type='FeaturedPost'>
+          <b:includable id='main'>
+            <section aria-label='Featured articles' class='header-content' x-data="{
+                            allRightColumnPosts: [
+                                { id: '2', category: 'CRYPTO', title: 'Judul head 2', author: 'OverKing', date: '2025-07-11', dateText: '11 July, 2025' },
+                                { id: '3', category: 'AIRDROP', title: 'Judul head 3', author: 'OverKing', date: '2025-07-11', dateText: '11 July, 2025' },
+                                { id: '4', category: 'BELAJAR', title: 'Judul head 4', author: 'OverKing', date: '2025-07-11', dateText: '11 July, 2025' }
+                            ],
+                            visibleRightColumnPosts: [],
+                            updatePosts() {
+                                if (window.matchMedia('(max-width: 768px)').matches) {
+                                    this.visibleRightColumnPosts = this.allRightColumnPosts.slice(0, 2);
+                                } else {
+                                    this.visibleRightColumnPosts = this.allRightColumnPosts;
+                                }
+                            },
+                            init() {
+                                this.updatePosts();
+                                window.addEventListener('resize', () => this.updatePosts());
+                            }
+                        }">
+              <b:if cond='data:posts.length'>
+                <article class='header-post header-post-1' expr:style='&quot;background-image: url(&quot; + data:posts[0].featuredImage + &quot;);&quot;'>
+                  <a class='post-link' expr:href='data:posts[0].url'>
+                    <div class='post-content-overlay'>
+                      <span class='category'>
+                        <data:posts[0].labels.first.name />
+                      </span>
+                      <h2 class='post-title'>
+                        <data:posts[0].title />
+                      </h2>
+                      <p class='post-meta'>
+                        <span class='author'>by
+                          <data:posts[0].author.name />
+                        </span>
+                        <time expr:datetime='data:posts[0].timestampISO8601'>
+                          <data:posts[0].dateHeader />
+                        </time>
+                      </p>
+                    </div>
+                  </a>
+                </article>
+              </b:if>
+              
+              <div class='header-right-column'>
+                <div class='header-top-right-grid'>
+                  <b:loop index='i' values='data:posts' var='post'>
+                    <b:if cond='i > 0 and i &lt; 3'>
+                      <article class='header-post' expr:class='&quot;header-post-&quot; + (i + 1)' expr:style='&quot;background-image: url(&quot; + data:post.featuredImage + &quot;);&quot;'>
+                        <a class='post-link' expr:href='data:post.url'>
+                          <div class='post-content-overlay'>
+                            <span class='category'>
+                              <data:post.labels.first.name />
+                            </span>
+                            <h3 class='post-title'>
+                              <data:post.title />
+                            </h3>
+                            <p class='post-meta'>
+                              <span class='author'>by
+                                <data:post.author.name />
+                              </span>
+                              <time expr:datetime='data:post.timestampISO8601'>
+                                <data:post.dateHeader />
+                              </time>
+                            </p>
+                          </div>
+                        </a>
+                      </article>
+                    </b:if>
+                  </b:loop>
+                </div>
+                <b:if cond='data:posts.length > 3'>
+                  <article class='header-post header-post-4' expr:style='&quot;background-image: url(&quot; + data:posts[3].featuredImage + &quot;);&quot;'>
+                    <a class='post-link' expr:href='data:posts[3].url'>
+                      <div class='post-content-overlay'>
+                        <span class='category'>
+                          <data:posts[3].labels.first.name />
+                        </span>
+                        <h3 class='post-title'>
+                          <data:posts[3].title />
+                        </h3>
+                        <p class='post-meta'>
+                          <span class='author'>by
+                            <data:posts[3].author.name />
+                          </span>
+                          <time expr:datetime='data:posts[3].timestampISO8601'>
+                            <data:posts[3].dateHeader />
+                          </time>
+                        </p>
+                      </div>
+                    </a>
+                  </article>
+                </b:if>
+                <template x-if="visibleRightColumnPosts.length > 2">
+                </template>
+              </div>
+            </section>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </header>
+    
+    <b:section class='tools-section' id='tools-sec' maxwidgets='1' showaddelement='yes'>
+      <b:widget id='HTML2' locked='false' title='Tools Section' type='HTML'>
+        <b:includable id='main'>
+          <section aria-labelledby='tools-title' class='tools-section'>
+            <h3 class='sidebar-title' id='tools-title'>Tools</h3>
+            <div class='tools-container'>
+              <div class='tool-box'>
+                <a href='#tool1'>Tools 1</a>
+              </div>
+              <div class='tool-box'>
+                <a href='#tool2'>Tools 2</a>
+              </div>
+              <div class='tool-box'>
+                <a href='#tool3'>Tools 3</a>
+              </div>
+              <div class='tool-box'>
+                <a href='#tool4'>Tools 4</a>
+              </div>
+            </div>
+          </section>
+        </b:includable>
+      </b:widget>
+    </b:section>
+    
+    footer'>
+    <div class='about-us-content'>
+      <img alt='OverKing Logo' class='about-us-logo' src='https://via.placeholder.com/50x50/3e1a5f/FFFFFF?text=LOGO' />
+      <div class='about-us-text'>
+        <h3 class='sidebar-title' id='about-us-footer-title'>About Us</h3>
+        <p class='description-text'>Description blogger</p>
+      </div>
+    </div>
+    </section>
+    </b:includable>
+    </b:widget>
+    </b:section>
+    
+    <b:section class='footer-social-section' id='footer-social-sec' maxwidgets='1' showaddelement='yes'>
+      <b:widget id='LinkList4' locked='false' title='Footer Social Links' type='LinkList'>
+        <b:includable id='main'>
+          <div aria-label='Social media links' class='footer-social-icons' role='group'>
+            <b:loop values='data:links' var='link'>
+              <a aria-label='Facebook' class='social-icon' expr:href='data:link.url'>
+                <b:if cond='data:link.name == &quot;Facebook&quot;'>
+                  <i aria-hidden='true' class='fab fa-facebook-f'></i>
+                  <b:else />
+                  <i aria-hidden='true' class='fab fa-twitter'></i>
+                </b:if>
+              </a>
+            </b:loop>
+          </div>
+        </b:includable>
+      </b:widget>
+    </b:section>
+  </div>
+  
+  <div class='footer-bottom-row'>
+    <p class='copyright'>Create By
+      <data:blog.title />
+    </p>
+    <b:section class='footer-nav-section' id='footer-nav-sec' maxwidgets='1' showaddelement='yes'>
+      <b:widget id='LinkList5' locked='false' title='Footer Navigation' type='LinkList'>
+        <b:includable id='main'>
+          <nav aria-label='Footer navigation' class='footer-nav' role='navigation'>
+            <b:loop values='data:links' var='link'>
+              <a expr:href='data:link.url'>
+                <data:link.name />
+              </a>
+            </b:loop>
+          </nav>
+        </b:includable>
+      </b:widget>
+    </b:section>
+  </div>
+  </footer>
+  </div>
+</body>
+
+</html>

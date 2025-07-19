@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -268,12 +268,7 @@
                                 </article>
                             </template>
                         </div>
-                        <button class="load-more-btn" 
-                                :class="{ 'load-more-disabled': visiblePostsCount >= allPosts.length }"
-                                aria-label="Load more posts" 
-                                @click="showMorePosts()" 
-                                :disabled="visiblePostsCount >= allPosts.length"
-                                x-text="visiblePostsCount >= allPosts.length ? 'No More Content' : 'Load More'">
+                        <button class="load-more-btn" :class="{ 'load-more-disabled': visiblePostsCount >= allPosts.length }" aria-label="Load more posts" @click="showMorePosts()" :disabled="visiblePostsCount >= allPosts.length" x-text="visiblePostsCount >= allPosts.length ? 'No More Content' : 'Load More'">
                         </button>
                     </div>
                 </section>
@@ -464,4 +459,5 @@
         </footer>
     </div>
 </body>
+
 </html>
